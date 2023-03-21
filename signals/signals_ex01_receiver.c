@@ -1,34 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   signals_ex00_sender.c                              :+:      :+:    :+:   */
+/*   signals_exo1_receiver.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khabbout <khabbout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/21 15:50:39 by khabbout          #+#    #+#             */
-/*   Updated: 2023/03/21 17:12:21 by khabbout         ###   ########.fr       */
+/*   Created: 2023/03/21 16:33:11 by khabbout          #+#    #+#             */
+/*   Updated: 2023/03/21 16:33:51 by khabbout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/*To be added by the user. The user should receive the signal sent*/
 
 #include <stdio.h>
 #include<signal.h>
 #include<unistd.h>
-#include<stdlib.h>
 
-/*to create if you want to test if you could send a signal*/
-int	main(int ac, char **av)
+void signal_handler(int sig_number)
 {
-	int	receiver_pid;
+    if (sig_number == SIGUSR1)
+        printf("SIGUSR1 received!\n");
+    else if (sig_number == SIGUSR2)
+        printf("SIGUSR2 received!\n");
+}
 
-	if (ac == 3)
-	{
-		receiver_pid = atoi(av[1]);
-		if (!av[2])
-			return (1);
-        if(av[2][0]== '1')
-            kill(receiver_pid, SIGUSR1);
-        if (av[2][0] == '2')
-            kill(receiver_pid, SIGUSR2);
+int main()
+{
+    pid_t pid;
+
+    pid = getpid();
+    printf("PID to use: %d\n", pid);
+    while(1)
+    {
+        signal(SIGUSR1, signal_handler);
+        signal(SIGUSR2, signal_handler);
+        pause();
     }
-    return (0);
 }
