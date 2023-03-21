@@ -6,7 +6,7 @@
 /*   By: khabbout <khabbout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:42:22 by khabbout          #+#    #+#             */
-/*   Updated: 2023/03/21 16:01:06 by khabbout         ###   ########.fr       */
+/*   Updated: 2023/03/21 17:24:29 by khabbout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int main()
     pid_t pid;
 
     pid = getpid();
-    printf("PID to use: %d\n", pid);
+    printf("\033[0;32mPID to use: %d\n", pid);
     while(1)
     {
         signal(SIGUSR1, signal_handler);

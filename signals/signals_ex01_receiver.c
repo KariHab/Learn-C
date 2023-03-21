@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   signals_exo1_receiver.c                            :+:      :+:    :+:   */
+/*   signals_ex01_receiver.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khabbout <khabbout@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 16:33:11 by khabbout          #+#    #+#             */
-/*   Updated: 2023/03/21 16:33:51 by khabbout         ###   ########.fr       */
+/*   Updated: 2023/03/21 17:23:31 by khabbout         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int main()
     pid_t pid;
 
     pid = getpid();
-    printf("PID to use: %d\n", pid);
+    printf("\033[0;32mPID to use: %d\n", pid);
     while(1)
     {
         signal(SIGUSR1, signal_handler);
